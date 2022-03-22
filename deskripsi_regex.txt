@@ -1,0 +1,54 @@
+regex: [\w._%+-]+@[\w\.-]+\.[a-zA-Z]{2,4}
+
+deskripsi :
+[\w._%+-] : 
+\w : huruf dan angka apa saja ,seperti [a-zA-Z_0-9]
+. : tanda titik ,yang berarti karakter apa saja
+_ : karakter garis bawah
+% : the following special character (except "<" and ">")
++ : karakter plus
+- : karakter garis bawah
+
+@[\w\.-]
+@ : harus ada tanda @
+Berikutnya adalah nama domain yang harus: huruf dan angka apa saja,dengan karakter \.-
+
+\.[a-zA-Z]{2,4}
+kemudian dengan ekstensi 
+\. : diikuti dengan titik
+[a-zA-Z]{2,4} : huruf alfabet besar dan kecil sebabanyak 2-4 huruf
+
+
+
+(\d{3}[-\.\s]??\d{3}[-\.\s]??\d{4,6}|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4,6}|\d{3,4}[-\.\s]??\d{4,6})
+
+'021-7632456'
+
+\d{3} : ambil 3 digit pertama
+[-\.\s] : disertai tanda - kemudian . (karakter apa saja kecuali newline) kemudian \s (spasi)
+hasil 021-
+?? : repeat 
+[-\.\s] : disertai tanda - kemudian . (karakter apa saja kecuali newline) kemudian \s (spasi)
+hasil 763
+?? lanjut
+\d{4,6} :ambil digit angka sebanyak 4-6
+hasil 2456
+
+|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4,6}
+
+021 797 4524
+| = atau
+\(\d{3}\)\s : ambil 3 digit pertama disertai spasi
+hasil 021 
+*\d{3}[-\.\s] : perulangan pengambilan data ambil 3 digit angka dan karakter - , all karakter, dan spasi
+hasil 797
+\d{4,6} :ambil digit angka sebanyak 4-6
+hasil : 4524
+
+
+\d{3,4}[-\.\s]??\d{4,6}
+0822959020
+\d{3,4}[-\.\s] : ambil digit angka sebanyak 3-4 dan karakter - , all karakter, dan spasi
+hasil : 0822
+??\d{4,6} : lanjut ambil digit angka sebanyak 4-6
+hasil : 959020
